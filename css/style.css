@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(53, 51, 51);
+    color: white;
+    font-family: "Lato";
+    font-weight: 400;
+}
+.container{
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: auto 1fr 10%;
+    height: 100vh;
+    width: 100vw;
+}
+.header{
+    grid-column-start: span 3;
+    height: 20%;
+}
+nav{
+    display: flex;
+    padding:20px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: rgb(42, 41, 41);
+}
+.logo{
+    font-family: Lato;
+    font-weight: 300;
+    width: 200px;
+    padding-left: 50px;
+}
+
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin-left: 20px;
+    padding-right: 50px;
+
+}
+.content{
+    grid-column-start:span 3;
+    height: 80%;
+}
+.content_center{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: flex-start;
+}
+.content_text{
+    text-align: left;
+    padding: 20px;
+    margin-top: 40px;
+    margin-left: 100px;
+}
+.content_picture{
+    max-width: 100%;
+    max-height: 100%;
+    margin-right: 20px;
+}
+
+img{
+    max-width: 50%;
+    max-height: 50%;
+    margin-top: 20px;
+    margin-left: 100px;
+    border-radius: 20px;
+    transition:all 0,4s;
+}
+img:hover{
+    transform: scale(1.02);
+}
+.footer{
+    background-color: rgb(42, 41, 41);
+    display: flex;
+    grid-column-start: span 3;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+#footer_links{
+    list-style: none;
+    color: white;
+}
+#footer_links li{
+    display: inline;
+    margin: 0 20px; 
+    text-decoration: none;
+}
+li a{
+    text-decoration: none;
+    color: white;
+    transition: all 0,4;
+}
+li a:hover{
+    color: rgb(157, 156, 156); 
+    font-size: 18px;
+}
+button{
+    border: none;
+    background-color: inherit;
+    color:white;
+    font-size: 16px;
+    margin-right:20px;
+    margin-bottom: 20px;
+    margin-top:10px;
+}
+button:hover{
+    color:rgb(157, 156, 156);
+}
+.center_form{
+    display: flex;
+    justify-content: center;
+}
+#contact_form{
+    background-color: rgb(92, 85, 85);
+    display: flex;
+    flex-direction: column;
+    padding: 5% 5%;
+    margin: 20px auto;
+    width: 90%;
+    height: 60%;
+    max-width: 600px;
+    border-radius: 20px;
+}
+#contact_form table {
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-bottom: 10px; 
+}
+
+#contact_form td {
+    padding: 5px; 
+    text-align: left; 
+}
+
+#contact_form label {
+    font-weight: 600; 
+    display: block; 
+    margin-bottom: 10px; 
+}
+
+#contact_form input,
+#contact_form textarea {
+    width: 100%; 
+    padding: 15px; 
+    margin-bottom: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 20px; 
+}
+#contact_form button[type="submit"] {
+    background-color: rgb(42, 41, 41); 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    transition: all 0,4s;
+}
+#contact_form button[type="submit"]:hover{
+    background-color: rgb(62, 61, 61);
+    transform: scale(1.1);
+}
+#download_button{
+    background-color: rgb(42, 41, 41); 
+    color: white; 
+    font-weight: 400;
+    padding: 10px 20px;
+    margin-top: 40px; 
+    border: none; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    transition: all 0,4s;
+}
+#download_button:hover{
+    background-color: rgb(62, 61, 61);
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 5% 90% 5%;
+    }
+
+    .nav ul {
+        display: none;
+    }
+
+    .content_center {
+        grid-template-columns: 100%;
+    }
+
+    .content_text, .content_picture {
+        margin-left: 0;
+    }
+
+    img {
+        margin-left: 0;
+    }
+
+    #contact_form {
+        width: 100%;
+        margin-top: 20px;
+        height: 300px;
+    }
+    #contact_form h2{
+        margin-top: 40px;
+    }
+    #contact_form button{
+        margin-bottom: 40px;
+    }
+    #project_image{
+        margin-bottom: 20px;
+        margin-left: 25%;
+    }
+}
