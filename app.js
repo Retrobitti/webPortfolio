@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const projectImage = document.getElementById("project_image");
 
     let imageLoopInterval;
-    let isLooping=false;
+    let isLooping = false;
 
     function getText(buttonId) {
         const data = {
@@ -35,35 +35,51 @@ document.addEventListener('DOMContentLoaded', function () {
             if (Array.isArray(imageSource)) {
                 let currentIndex = 0;
 
-                function updateImage() {
-                    projectImage.src = imageSource[currentIndex];
-                    currentIndex = (currentIndex + 1) % imageSource.length; 
+                async function updateImage() {
+                    return new Promise((resolve, reject) => {
+                        const image = new Image();
+                        image.src = imageSource[currentIndex];
+                        image.onload = () => {
+                            projectImage.src = image.src;
+                            currentIndex = (currentIndex + 1) % imageSource.length;
+                            resolve();
+                        };
+                        image.onerror = (error) => {
+                            reject(error);
+                        };
+                    });
                 }
 
-                updateImage(); 
-                if (button.id === '3' && isLooping) {
-                    imageLoopInterval = setInterval(updateImage, 5000);
-                }
+
+                updateImage()
+                    .then(() => {
+                        if (button.id === '3' && isLooping) {
+                            imageLoopInterval = setInterval(updateImage, 5000);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error loading image:', error);
+                    });
             } else {
                 projectImage.src = imageSource;
             }
-            
+
         });
     });
-    document.getElementById("download_button").addEventListener("click", function() {
+    document.getElementById("download_button").addEventListener("click", function () {
         const cvFilePath = "assets/testCV.pdf";
-    
+
         fetch(cvFilePath)
-          .then(response => response.blob())
-          .then(blob => {
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'testCV.pdf';
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-          })
+            .then(response => response.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'testCV.pdf';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            })
     });
 });
 
