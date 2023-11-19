@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
     document.getElementById("download_button").addEventListener("click", function () {
-        const cvFilePath = "assets/testCV.pdf";
+        const cvFilePath = "assets/cv_pekka_parviainen.pdf";
 
         fetch(cvFilePath)
             .then(response => response.blob())
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const url = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = 'testCV.pdf';
+                a.download = 'cv_pekka_parviainen.pdf';
                 document.body.appendChild(a);
                 a.click();
                 window.URL.revokeObjectURL(url);
