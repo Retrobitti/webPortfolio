@@ -29,6 +29,9 @@ nav{
     flex-wrap: wrap;
     background-color: rgb(42, 41, 41);
 }
+p{
+    font-size: 20;
+}
 .logo{
     font-family: Lato;
     font-weight: 300;
